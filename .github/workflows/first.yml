@@ -16,6 +16,10 @@ jobs:
 
       - name: Check Linux user
         run: whoami
+        
+      - name: Create file
+        run: mkdir piske-folder
+             cd piske-folder
 
       - name: Show current directory
         run: pwd
