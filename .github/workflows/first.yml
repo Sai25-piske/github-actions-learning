@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Say Hello
-        run: echo "Hello from GitHub Actions"
+        run: echo "Hello Sai! I am learning GitHub Actions"
 
       - name: Show current directory
         run: pwd
