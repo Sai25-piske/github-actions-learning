@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Say Hello
-        run: echo "Hello Sai! I am learning GitHub Actions"
+        run: echo "Hello i'm Sai Piske-- Here learning github actions" > test.txt
 
       - name: Check operating system
         run: uname -a
