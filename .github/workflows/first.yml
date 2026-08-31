@@ -1,4 +1,4 @@
-name: My second GitHub Action
+name: My First GitHub Action
 
 on:
   push:
@@ -10,6 +10,12 @@ jobs:
     steps:
       - name: Say Hello
         run: echo "Hello Sai! I am learning GitHub Actions"
+
+      - name: Check operating system
+        run: uname -a
+
+      - name: Check Linux user
+        run: whoami
 
       - name: Show current directory
         run: pwd
