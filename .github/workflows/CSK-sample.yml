@@ -15,7 +15,7 @@ jobs:
         run: mkdir Mumbai-Indians/
 
       - name: Team Mumbai
-        run: echo "Duniya hila denge hum" > Mumbai-Indians/MI.txt
+        run: echo "Duniya hila denge hum" > MI.txt
 
       - name: Check operating system
         run: uname -a
