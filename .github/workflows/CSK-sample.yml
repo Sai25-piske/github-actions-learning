@@ -2,32 +2,40 @@ name: Other sample action
 
 on:
   push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  hello:
-    runs-on: ubuntu-latest
-
+  Build:
+    runs-on: ubuntu-slim
     steps:
-      - name: Say CSK
-        run: echo "CSK--- Whistle podu" > CSK.txt
-
-      - name: New folder
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Creating folder
         run: mkdir Mumbai-Indians/
-
-      - name: Team Mumbai
-        run: echo "Duniya hila denge hum" > MI.txt
-
-      - name: Check operating system
-        run: uname -a
-
-      - name: Check Linux user
-        run: whoami
-
-      - name: Show current directory
-        run: pwd
-
-      - name: Show files
+      - name: Show folder
         run: ls
 
-      - name: Display file
-        run: cat MI.txt
+  Test:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Creating files
+        run: echo "Rohit sharma --- Mumbai cha Raja" > Mumbai-Indians/Mi.txt
+      - name: Show file
+        run: cat Mi.txt
+
+  Deploy:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: New file
+        run: echo "We are the % times title holder" > Mumbai-Indians/five-times.txt
+      - name: Display all files
+        run: ls -la
+      - name: Show file
+        run: cat Mi.txt
+        
