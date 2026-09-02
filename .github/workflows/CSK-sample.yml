@@ -11,6 +11,9 @@ jobs:
       - name: Say CSK
         run: echo "CSK--- Whistle podu" > CSK.txt
 
+      - name: New folder
+        run: mkdir Mumbai-Indians/
+
       - name: Team Mumbai
         run: echo "Duniya hila denge hum" > Mumbai-Indians/MI.txt
 
