@@ -7,35 +7,73 @@ on:
   workflow_dispatch:
 
 jobs:
+
   Build:
     runs-on: ubuntu-slim
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
       - name: Creating folder
-        run: mkdir Mumbai-Indians/
+        run: mkdir Mumbai-Indians
+
+      - name: Creating Build file
+        run: echo "Rohit Sharma --- Mumbai cha Raja" > Mumbai-Indians/Mi.txt
+
       - name: Show folder
-        run: ls
+        run: ls -la Mumbai-Indians
+
+      - name: Upload Build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files
+          path: Mumbai-Indians/
+
 
   Test:
+    needs: Build
     runs-on: ubuntu-slim
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Creating files
-        run: echo "Rohit sharma --- Mumbai cha Raja" > /Mumbai-Indians/Mi.txt
+
+      - name: Download Build files
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: Mumbai-Indians/
+
+      - name: Show files
+        run: ls -la Mumbai-Indians
+
       - name: Show file
-        run: cat Mi.txt
+        run: cat Mumbai-Indians/Mi.txt
+
 
   Deploy:
+    needs: Test
     runs-on: ubuntu-slim
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Download Build files
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: Mumbai-Indians/
+
       - name: New file
-        run: echo "We are the % times title holder" > /Mumbai-Indians/five-times.txt
+        run: echo "We are the 5 times title holder" > Mumbai-Indians/five-times.txt
+
       - name: Display all files
-        run: ls -la
-      - name: Show file
-        run: cat Mi.txt
-        
+        run: ls -la Mumbai-Indians
+
+      - name: Show Mi file
+        run: cat Mumbai-Indians/Mi.txt
+
+      - name: Show five-times file
+        run: cat Mumbai-Indians/five-times.txt
