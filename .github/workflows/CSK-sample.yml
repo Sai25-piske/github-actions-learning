@@ -11,6 +11,9 @@ jobs:
       - name: Say CSK
         run: echo "CSK--- Whistle podu" > CSK.txt
 
+      - name: Team Mumbai
+        run: echo "Duniya hila denge hum" > Mumbai-Indians/MI.txt
+
       - name: Check operating system
         run: uname -a
 
